@@ -8,6 +8,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\StoreSettingsController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -56,6 +57,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/store/dashboard', [StoreController::class, 'dashboard'])->name('store.dashboard');
     Route::patch('/store/update', [StoreSettingsController::class, 'update'])->name('store.update');
+    Route::get('/store/categories', [CategoryController::class, 'index'])->name('store.categories.index');
+    Route::post('/store/categories', [CategoryController::class, 'store'])->name('store.categories.store');
+    Route::put('/store/categories/{category}', [CategoryController::class, 'update'])->name('store.categories.update');
+    Route::delete('/store/categories/{id}', [CategoryController::class, 'destroy'])->name('store.categories.destroy');
 });
 
 require __DIR__.'/auth.php';

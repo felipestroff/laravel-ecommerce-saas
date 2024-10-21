@@ -113,17 +113,17 @@ const closeModal = () => {
                     <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white">Plano Básico</h3>
                         <p class="mt-4 text-gray-600 dark:text-gray-300">Ideal para iniciantes.</p>
-                        <p class="mt-4 text-2xl font-bold text-gray-900 dark:text-white">R$49/mês</p>
+                        <p class="mt-4 text-2xl font-bold text-gray-900 dark:text-white">R$/mês</p>
                     </div>
                     <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white">Plano Profissional</h3>
                         <p class="mt-4 text-gray-600 dark:text-gray-300">Para lojas em crescimento.</p>
-                        <p class="mt-4 text-2xl font-bold text-gray-900 dark:text-white">R$99/mês</p>
+                        <p class="mt-4 text-2xl font-bold text-gray-900 dark:text-white">R$/mês</p>
                     </div>
                     <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white">Plano Premium</h3>
                         <p class="mt-4 text-gray-600 dark:text-gray-300">Para empresas estabelecidas.</p>
-                        <p class="mt-4 text-2xl font-bold text-gray-900 dark:text-white">R$199/mês</p>
+                        <p class="mt-4 text-2xl font-bold text-gray-900 dark:text-white">R$/mês</p>
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@ const closeModal = () => {
 
         <!-- Footer -->
         <footer class="bg-gray-800 py-8 text-center text-white">
-            <p>&copy; 2024 E-commerce SaaS. Todos os direitos reservados.</p>
+            <p>&copy; 2024 E-commerce. Todos os direitos reservados.</p>
             <p>Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})</p>
         </footer>
     </div>

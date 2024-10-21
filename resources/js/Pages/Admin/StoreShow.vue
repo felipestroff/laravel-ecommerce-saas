@@ -29,7 +29,7 @@ import { Head } from '@inertiajs/vue3';
                             <div class="card-body">
                                 <p><strong>Nome:</strong> {{ store.name }}</p>
                                 <p><strong>Email:</strong> {{ store.email }}</p>
-                                <p><strong>Status:</strong> {{ store.is_active ? 'Ativa' : 'Inativa' }}</p>
+                                <p><strong>Status:</strong> {{ store.is_active ? 'Ativo' : 'Inativo' }}</p>
                             </div>
                         </div>
                     </section>

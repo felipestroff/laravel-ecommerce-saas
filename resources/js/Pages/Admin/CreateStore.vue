@@ -94,6 +94,7 @@ onMounted(() => {
                                 type="text"
                                 class="mt-1 block w-full"
                                 autocomplete="off"
+                                :autofocus="!isEditing"
                                 required
                             />
 

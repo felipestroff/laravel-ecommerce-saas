@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
+use App\Http\Requests\CategoryStoreRequest;
 
 class CategoryController extends Controller
 {
@@ -13,73 +14,39 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        // Obtém as categorias da loja logada (user_id)
+        // Mostra as categorias pertencentes ao usuário autenticado (store)
         $categories = Category::where('user_id', Auth::id())->get();
-
-        return view('categories.index', compact('categories'));
+        return Inertia::render('Store/Categories', [
+            'categories' => $categories
+        ]);
     }
 
-    /**
-     * Store a newly created category.
-     */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
-        // Valida os dados da requisição
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-        ]);
-
-        // Cria a categoria para o usuário logado (loja)
+        // Cria a categoria para a loja autenticada
         Category::create([
-            'name' => $validated['name'],
-            'description' => $validated['description'],
+            'name' => $request->name,
             'user_id' => Auth::id(),
         ]);
 
-        return redirect()->route('categories.index')->with('success', 'Category created successfully!');
+        return redirect()->route('store.categories.index')->with('success', 'Categoria criada com sucesso!');
     }
 
-    /**
-     * Show the form for editing the specified category.
-     */
-    public function edit(Category $category)
+    public function update(CategoryStoreRequest $request, Category $category)
     {
-        // Permite apenas que a loja proprietária edite a categoria
-        $this->authorize('update', $category);
-
-        return view('categories.edit', compact('category'));
-    }
-
-    /**
-     * Update the specified category in storage.
-     */
-    public function update(Request $request, Category $category)
-    {
-        $this->authorize('update', $category);
-
-        // Valida os dados da requisição
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
+        // Atualiza a categoria
+        $category->update([
+            'name' => $request->name,
         ]);
 
-        // Atualiza a categoria
-        $category->update($validated);
-
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully!');
+        return redirect()->route('store.categories.index')->with('success', 'Categoria atualizada com sucesso!');
     }
 
-    /**
-     * Remove the specified category from storage.
-     */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        $this->authorize('delete', $category);
-
-        // Deleta a categoria
+        $category = Category::where('user_id', Auth::id())->findOrFail($id);
         $category->delete();
 
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully!');
+        return redirect()->route('store.categories.index')->with('success', 'Categoria excluída com sucesso!');
     }
 }

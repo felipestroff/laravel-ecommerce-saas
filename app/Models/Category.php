@@ -14,7 +14,6 @@ class Category extends Model
      */
     protected $fillable = [
         'name',
-        'description',
         'user_id',
     ];
 
@@ -24,13 +23,5 @@ class Category extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Get the products under this category.
-     */
-    public function products()
-    {
-        return $this->hasMany(Product::class);
     }
 }

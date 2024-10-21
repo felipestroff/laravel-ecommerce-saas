@@ -51,8 +51,15 @@ import { faEye, faEdit, faTrash, faToggleOn, faToggleOff } from '@fortawesome/fr
                                         <td class="px-6 py-4 whitespace-nowrap">{{ store?.name || 'N/A' }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ store?.email || 'N/A' }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            {{ store?.store_settings?.name ?? 'N/A' }}
-                                            {{ store?.store_settings?.subdomain ?? 'N/A' }}
+                                            <!-- Nome da Loja -->
+                                            <span class="font-bold block">
+                                                {{ store?.store_settings?.name ?? 'N/A' }}
+                                            </span>
+
+                                            <!-- Badge para o Subdomínio (posicionado acima) -->
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mb-1">
+                                                {{ store?.store_settings?.subdomain ?? 'N/A' }}
+                                            </span>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ store?.created_at ? new Date(store.created_at).toLocaleDateString() : 'N/A' }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-4">
